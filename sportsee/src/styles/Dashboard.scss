@@ -1,0 +1,9 @@
+@import './global.scss';
+
+main {
+    position: absolute;
+    left: $size_aside;
+
+    margin: 80px;
+    border: 1px solid black;
+}
