@@ -1,8 +1,7 @@
 import * as d3 from 'd3';
 
-const data = [0, 1, 2, 3, 4];
-
 export default function LinePlot({
+  data,
   width = 640,
   height = 400,
   marginTop = 20,
@@ -21,10 +20,10 @@ export default function LinePlot({
       <path
         fill="none"
         stroke="currentColor"
-        stroke-width="1.5"
+        strokeWidth="1.5"
         d={line(data)}
       />
-      <g fill="white" stroke="currentColor" stroke-width="1.5">
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
         {data.map((d, i) => (
           <circle key={i} cx={x(i)} cy={y(d)} r="2.5" />
         ))}

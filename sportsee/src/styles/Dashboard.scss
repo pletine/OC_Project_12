@@ -6,4 +6,15 @@ main {
 
     margin: 80px;
     border: 1px solid black;
+
+    display: flex;
+    flex-flow: row nowrap;
+
+    article {
+        background-color: rgb(255, 193, 193);
+    }
+
+    aside {
+        background-color: rgb(138, 247, 142);
+    }
 }
