@@ -1,50 +1,25 @@
-import React, { useState, useEffect } from 'react';
 import '../styles/Dashboard.scss';
-import Plot from './TestPlot';
+import useFetch from '../scripts/useFetch';
 
-function Dashboard({ data }) {
-  const numbers = data.numbers;
+function Dashboard() {
+  const domain = 'http://localhost:3000';
+  const uriTest = '/user/12';
 
-  const [testData, setTestData] = useState('');
-
-  const fetchTestData = async () => {
-    try {
-      const data = await fetch('http://localhost:3000/user/12', {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-        },
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((response) => {
-          return response.data;
-        });
-      setTestData(data);
-      console.log(data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchTestData();
-  }, []);
+  const { data, loading, error } = useFetch(domain + uriTest);
 
   return (
     <main>
       <article>
         <h1>Bonjour Thomas</h1>
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-        <div className="dailyAct">
-          <Plot data={numbers} />
-        </div>
-        <div className="averageTime">
-          <p>aaa aa{testData.id}</p>
-        </div>
+        <div className="averageTime"></div>
         <div className="radar"></div>
         <div className="score"></div>
+        <div className="App">
+          {loading && <p>{loading}</p>}
+          {data && <p>{data.keyData.carbohydrateCount}</p>}
+          {error && <p>{error}</p>}
+        </div>
       </article>
 
       <aside>
