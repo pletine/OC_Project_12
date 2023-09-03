@@ -8,13 +8,26 @@ main {
     border: 1px solid black;
 
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
 
+    .title {
+        width: 100%;
+
+        h1 span{
+            color: red;
+        }
+    }
     article {
         background-color: rgb(255, 193, 193);
     }
 
     aside {
         background-color: rgb(138, 247, 142);
+
+        li {
+            background-color: #FBFBFB;
+            padding: 30px 50px;
+            margin: 30px;
+        }
     }
 }
