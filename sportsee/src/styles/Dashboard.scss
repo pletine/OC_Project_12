@@ -2,7 +2,7 @@
 @import './styleGraphs.scss';
 
 main {
-    border: 1px solid black;
+    border: 5px solid red;
 
     width: calc(100vw - $width_aside);
     height: calc(100vh - $heigth_header);

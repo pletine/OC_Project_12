@@ -54,12 +54,14 @@ function Dashboard() {
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </div>
 
-      <article>
-        {userData && <BarChart />}
-        {userData && <RadarChart />}
-        {userData && <LineChartHome />}
-        {userData && <RadialBarChartHome />}
-      </article>
+      {userData && (
+        <article>
+          <BarChart />
+          <RadarChart />
+          <LineChartHome />
+          <RadialBarChartHome />
+        </article>
+      )}
 
       <aside>
         {userData && (
