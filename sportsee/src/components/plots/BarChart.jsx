@@ -1,3 +1,5 @@
 export default function BarChart() {
-  return <p></p>;
+  const graph = <div></div>;
+
+  return <div className="averageTime">{graph}</div>;
 }

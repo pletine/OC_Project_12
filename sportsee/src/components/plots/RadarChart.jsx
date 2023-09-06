@@ -1,3 +1,5 @@
 export default function RadarChart() {
-  return <p></p>;
+  const graph = <div></div>;
+
+  return <div className="radar">{graph}</div>;
 }

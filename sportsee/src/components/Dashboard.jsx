@@ -1,9 +1,14 @@
 import '../styles/Dashboard.scss';
 import useFetch from '../scripts/useFetch';
+
+// Import Graph Components
 import RadialBarChartHome from './plots/RadialBarChart';
 import LineChartHome from './plots/LineChart';
 import InfoCard from './plots/InfoCard';
+import RadarChart from './plots/RadarChart';
+import BarChart from './plots/BarChart';
 
+// Import icons and images
 import IconCal from '../assets/IconCal.svg';
 import IconGluc from '../assets/IconGluc.svg';
 import IconLipid from '../assets/IconLipid.svg';
@@ -50,8 +55,8 @@ function Dashboard() {
       </div>
 
       <article>
-        <div className="averageTime"></div>
-        <div className="radar"></div>
+        {userData && <BarChart />}
+        {userData && <RadarChart />}
         {userData && <LineChartHome />}
         {userData && <RadialBarChartHome />}
       </article>
