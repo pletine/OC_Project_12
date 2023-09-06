@@ -1,12 +1,13 @@
 import '../styles/Dashboard.scss';
+import React from 'react';
 import useFetch from '../scripts/useFetch';
 
 // Import Graph Components
-import RadialBarChartHome from './plots/RadialBarChart';
-import LineChartHome from './plots/LineChart';
 import InfoCard from './plots/InfoCard';
-import RadarChart from './plots/RadarChart';
-import BarChart from './plots/BarChart';
+import CustomRadialBarChart from './plots/CustomRadialBarChart';
+import CustomLineChart from './plots/CustomLineChart';
+import CustomRadarChart from './plots/CustomRadarChart';
+import CustomBarChart from './plots/CustomBarChart';
 
 // Import icons and images
 import IconCal from '../assets/IconCal.svg';
@@ -54,14 +55,20 @@ function Dashboard() {
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </div>
 
-      {userData && (
+      {/* {userData && (
         <article>
           <BarChart />
           <RadarChart />
           <LineChartHome />
           <RadialBarChartHome />
         </article>
-      )}
+      )} */}
+      <article>
+        <CustomBarChart />
+        <CustomRadarChart />
+        <CustomLineChart />
+        <CustomRadialBarChart />
+      </article>
 
       <aside>
         {userData && (

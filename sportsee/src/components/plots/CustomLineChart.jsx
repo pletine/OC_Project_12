@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   LineChart,
   Line,
@@ -7,7 +8,7 @@ import {
   Tooltip,
 } from 'recharts';
 
-export default function LineChartHome() {
+export default function CustomLineChart() {
   const dataGraph = [
     {
       name: 'Page A',
@@ -53,21 +54,18 @@ export default function LineChartHome() {
     },
   ];
 
-  const graph = (
-    <div></div>
-    // <LineChart
-    //   width={600}
-    //   height={300}
-    //   data={dataGraph}
-    //   margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-    // >
-    //   <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-    //   <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-    //   <XAxis dataKey="name" />
-    //   <YAxis />
-    //   <Tooltip />
-    // </LineChart>
+  return (
+    <LineChart
+      width={600}
+      height={300}
+      data={dataGraph}
+      margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+    >
+      <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+    </LineChart>
   );
-
-  return <div className="average">{graph}</div>;
 }
