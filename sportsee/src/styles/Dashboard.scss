@@ -2,24 +2,40 @@
 @import './styleGraphs.scss';
 
 main {
-    position: absolute;
-    left: $size_aside;
-
-    margin: 80px;
     border: 1px solid black;
 
+    width: calc(100vw - $width_aside);
+    height: calc(100vh - $heigth_header);
+    
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-between;
 
     .title {
         width: 100%;
+        line-height: 24px;
 
-        h1 span{
-            color: red;
+        h1 {
+            font-family: 'Roboto';
+            font-size: 48px;
+            font-weight: 500;
+            padding: 0.5em;
+
+            span {
+                color: red;
+            }
+        }
+
+        p {
+            font-family: 'Roboto';
+            font-size: 18px;
+            font-weight: 400;
+            padding: 0.2em 1.5em;
         }
     }
-    
-    article {
-        background-color: rgb(255, 193, 193);
+
+    aside {
+        width: 25%;
+        border: 1px blue solid;
     }
 }

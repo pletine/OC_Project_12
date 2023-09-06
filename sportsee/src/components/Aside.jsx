@@ -2,7 +2,7 @@ import '../styles/Aside.scss';
 
 function Aside() {
   return (
-    <aside>
+    <aside className="aside_nav">
       <nav>
         <ul>
           <li>Yoga</li>

@@ -1,11 +1,17 @@
+@import './global.scss';
+
 header {
+    width: 100%;
+    height: $heigth_header;
+
     display: flex;
     flex-flow: row nowrap;
+    justify-content: space-between;
+
     background-color: black;
     color: white;
-    width: 100%;
-    justify-content: space-between;
-    padding: 10px 10px;
+    
+    padding: 10px;
 
     img {
         width: 178px;

@@ -1,10 +1,11 @@
 @import './global.scss';
 
-aside {
-    position: absolute;
-    left: 0;
-    height: 102%;
-    width: $size_aside;
+.aside_nav {
+    float: left;
+    
+    height: 100vh;
+    width: $width_aside;
+    
     background-color: black;
     color: white;
 

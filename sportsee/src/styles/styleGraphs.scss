@@ -1,19 +1,23 @@
 .infoCard {
     background-color: #FBFBFB;
-    width: 258px;
-    height: 124px;
-    margin: 30px;
+    margin: 10px;
     border-radius: 10px;
+    border: 1px black solid;
 
     figure {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-around;
         text-align: center;
-        padding: 20px;
+        width: 20vw;
+        aspect-ratio: 2/1;
+        padding: 5px;
 
         img {
-            padding: 30px;
+            width: 4em;
+            height: 4em;
+            aspect-ratio: 1/1;
+            padding: 20px;
             border-radius: 25px;
         }
 
@@ -22,21 +26,19 @@
             flex-flow: column nowrap;
             text-align: left;
             justify-content: center;
+            line-height: 24px;
 
             p:first-child {
                 font-family: 'Roboto', sans-serif;
                 font-size: 20px;
                 font-weight: 700;
-                line-height: 24px;
             }
 
             p:last-child {
                 font-family: 'Roboto', sans-serif;
                 font-size: 14px;
                 font-weight: 500;
-                line-height: 24px;
             }
         }
     }
 }
-
