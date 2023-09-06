@@ -7,6 +7,6 @@ import Dashboard from './components/Dashboard';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Dashboard modeDataGet={true} />
+    <Dashboard />
   </React.StrictMode>
 );

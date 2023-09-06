@@ -1,11 +1,29 @@
-export default function InfoCard({ infoValue, infoUnit, infoLegend }) {
+export default function InfoCard({
+  srcImg,
+  colorImg,
+  infoValue,
+  infoUnit,
+  infoLegend,
+}) {
+  const styleImg = {
+    backgroundColor: colorImg,
+  };
+
+  let nfObject = new Intl.NumberFormat('en-US');
+  let output = nfObject.format(infoValue);
+
   return (
-    <li>
-      <p>
-        {infoValue}
-        {infoUnit}
-      </p>
-      <p>{infoLegend}</p>
+    <li className="infoCard">
+      <figure>
+        <img src={srcImg} alt="Icone" style={styleImg} />
+        <figcaption>
+          <p>
+            {output}
+            {infoUnit}
+          </p>
+          <p>{infoLegend}</p>
+        </figcaption>
+      </figure>
     </li>
   );
 }

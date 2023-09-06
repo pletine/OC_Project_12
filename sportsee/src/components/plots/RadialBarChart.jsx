@@ -1,72 +1,35 @@
-import React, { PureComponent } from 'react';
-// import {
-//   RadialBarChart,
-//   RadialBar,
-//   Legend,
-//   ResponsiveContainer,
-// } from 'recharts';
-// import RadialBarChart from 'recharts';
+import React from 'react';
+import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
 
-// const data = [
-//   {
-//     name: '18-24',
-//     uv: 31.47,
-//     pv: 2400,
-//     fill: '#8884d8',
-//   },
-//   {
-//     name: '25-29',
-//     uv: 26.69,
-//     pv: 4567,
-//     fill: '#83a6ed',
-//   },
-//   {
-//     name: '30-34',
-//     uv: 15.69,
-//     pv: 1398,
-//     fill: '#8dd1e1',
-//   },
-//   {
-//     name: '35-39',
-//     uv: 8.22,
-//     pv: 9800,
-//     fill: '#82ca9d',
-//   },
-//   {
-//     name: '40-49',
-//     uv: 8.63,
-//     pv: 3908,
-//     fill: '#a4de6c',
-//   },
-//   {
-//     name: '50+',
-//     uv: 2.63,
-//     pv: 4800,
-//     fill: '#d0ed57',
-//   },
-//   {
-//     name: 'unknow',
-//     uv: 6.67,
-//     pv: 4800,
-//     fill: '#ffc658',
-//   },
-// ];
+const data = [
+  {
+    name: 'Data',
+    per: 12,
+    fill: 'red',
+  },
+  {
+    name: 'Echelle',
+    per: 100,
+    fill: 'transparent',
+  },
+];
 
-const style = {
-  top: '50%',
-  right: 0,
-  transform: 'translate(0, -50%)',
-  lineHeight: '24px',
-};
-
-export default function RadialBarChart({ data }) {
-  const graph = <p></p>;
-
-  return (
-    <div className="score">
-      <p>{data * 100}%</p>
-      {graph}
-      <p>De votre objectif</p>
-    </div>
+export default function RadialBarChartHome() {
+  const graph = (
+    <ResponsiveContainer>
+      <RadialBarChart
+        cx={150}
+        cy={150}
+        innerRadius={120}
+        outerRadius={140}
+        startAngle={180}
+        endAngle={-180}
+        data={data}
+      >
+        <RadialBar minAngle={10} cornerRadius={10} clockWise dataKey="per" />
+      </RadialBarChart>
+    </ResponsiveContainer>
   );
+
+  return <div className="score">{graph}</div>;
 }
