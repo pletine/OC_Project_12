@@ -2,11 +2,11 @@ import React from 'react';
 import {
   Bar,
   BarChart,
-  Legend,
   CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
+  Legend,
 } from 'recharts';
 
 export default function CustomBarChart() {
@@ -49,7 +49,7 @@ export default function CustomBarChart() {
   ];
 
   return (
-    <BarChart data={dataGraph}>
+    <BarChart width={730} height={250} data={dataGraph}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
       <YAxis />

@@ -64,10 +64,18 @@ function Dashboard() {
         </article>
       )} */}
       <article>
-        <CustomBarChart />
-        <CustomRadarChart />
-        <CustomLineChart />
-        <CustomRadialBarChart />
+        <div className="radar">
+          <CustomRadarChart />
+        </div>
+        <div className="line">
+          <CustomLineChart />
+        </div>
+        <div className="radial">
+          <CustomRadialBarChart />
+        </div>
+        <div className="bar">
+          <CustomBarChart />
+        </div>
       </article>
 
       <aside>
