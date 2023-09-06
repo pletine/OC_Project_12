@@ -27,20 +27,20 @@ function Dashboard() {
     error: errorUserData,
   } = useFetch(domain + mainURI);
 
-  // const {
-  //   // User Activity
-  //   data: userActivity,
-  // } = useFetch(domain + mainURI + 'activity');
+  const {
+    // User Activity
+    data: userActivity,
+  } = useFetch(domain + mainURI + 'activity');
 
-  // const {
-  //   // User Average Sessions
-  //   data: userAverageSessions,
-  // } = useFetch(domain + mainURI + 'average-sessions');
+  const {
+    // User Average Sessions
+    data: userAverageSessions,
+  } = useFetch(domain + mainURI + 'average-sessions');
 
-  // const {
-  //   // User Performance
-  //   data: userPerformance,
-  // } = useFetch(domain + mainURI + 'performance');
+  const {
+    // User Performance
+    data: userPerformance,
+  } = useFetch(domain + mainURI + 'performance');
 
   return (
     <main>
@@ -55,27 +55,30 @@ function Dashboard() {
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </div>
 
-      {/* {userData && (
-        <article>
-          <BarChart />
-          <RadarChart />
-          <LineChartHome />
-          <RadialBarChartHome />
-        </article>
-      )} */}
       <article>
-        <div className="radar">
-          <CustomRadarChart />
-        </div>
-        <div className="line">
-          <CustomLineChart />
-        </div>
-        <div className="radial">
-          <CustomRadialBarChart />
-        </div>
-        <div className="bar">
-          <CustomBarChart />
-        </div>
+        {userActivity && (
+          <div className="bar">
+            <CustomBarChart activity={userActivity} />
+          </div>
+        )}
+
+        {userAverageSessions && (
+          <div className="line">
+            <CustomLineChart average={userAverageSessions} />
+          </div>
+        )}
+
+        {userPerformance && (
+          <div className="radar">
+            <CustomRadarChart perf={userPerformance} />
+          </div>
+        )}
+
+        {userData && (
+          <div className="radial">
+            <CustomRadialBarChart score={userData.todayScore} />
+          </div>
+        )}
       </article>
 
       <aside>

@@ -1,73 +1,25 @@
 import React from 'react';
-import {
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar,
-  RadarChart,
-  Legend,
-} from 'recharts';
+import { PolarGrid, PolarAngleAxis, Radar, RadarChart } from 'recharts';
 
-export default function CustomRadarChart() {
-  const dataGraph = [
-    {
-      subject: 'Math',
-      A: 120,
-      B: 110,
-      fullMark: 150,
-    },
-    {
-      subject: 'Chinese',
-      A: 98,
-      B: 130,
-      fullMark: 150,
-    },
-    {
-      subject: 'English',
-      A: 86,
-      B: 130,
-      fullMark: 150,
-    },
-    {
-      subject: 'Geography',
-      A: 99,
-      B: 100,
-      fullMark: 150,
-    },
-    {
-      subject: 'Physics',
-      A: 85,
-      B: 90,
-      fullMark: 150,
-    },
-    {
-      subject: 'History',
-      A: 65,
-      B: 85,
-      fullMark: 150,
-    },
-  ];
+export default function CustomRadarChart({ perf }) {
+  // Create Array to store the value in the correct format
+  let dataSort = [perf.kind.length];
+  perf.data.forEach((elem) => {
+    let index = perf.data.indexOf(elem);
+    let newElem = { value: elem.value, kind: perf.kind[index + 1] };
+    dataSort[index] = newElem;
+  });
 
   return (
-    <RadarChart outerRadius={90} width={730} height={250} data={dataGraph}>
+    <RadarChart outerRadius={90} width={730} height={250} data={dataSort}>
       <PolarGrid />
-      <PolarAngleAxis dataKey="subject" />
-      <PolarRadiusAxis angle={30} domain={[0, 150]} />
+      <PolarAngleAxis dataKey="kind" />
       <Radar
-        name="Mike"
-        dataKey="A"
+        dataKey="value"
         stroke="#8884d8"
         fill="#8884d8"
         fillOpacity={0.6}
       />
-      <Radar
-        name="Lily"
-        dataKey="B"
-        stroke="#82ca9d"
-        fill="#82ca9d"
-        fillOpacity={0.6}
-      />
-      <Legend />
     </RadarChart>
   );
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import { RadialBarChart, RadialBar } from 'recharts';
 
-export default function CustomRadialBarChart() {
+export default function CustomRadialBarChart({ score }) {
   const dataGraph = [
     {
       name: 'Value',
-      uv: 12,
-      fill: 'red',
+      uv: score * 100,
+      fill: '#FF0000',
     },
     {
       name: 'Echelle',
@@ -17,19 +17,42 @@ export default function CustomRadialBarChart() {
 
   return (
     <RadialBarChart
-      width={730}
-      height={250}
-      innerRadius="50%"
-      outerRadius="80%"
+      width={400}
+      height={400}
+      innerRadius="70%"
+      outerRadius="120%"
       data={dataGraph}
       startAngle={180}
       endAngle={-180}
     >
-      <RadialBar
-        minAngle={15}
-        clockWise={true}
-        dataKey="uv"
-      />
+      <RadialBar clockWise={true} dataKey="uv" />
+      <text
+        x="50%"
+        y="50%"
+        style={{
+          fontFamily: 'Roboto',
+          fontSize: 26,
+          fontWeight: 700,
+          fill: '#282D30',
+        }}
+        width={200}
+        // scaleToFit={true}
+        textAnchor="middle"
+        // verticalAnchor="middle"
+      >
+        {(score * 100).toString()}%
+      </text>
+      <text
+        x="50%"
+        y="60%"
+        style={{ fontSize: 16, fontWeight: 500, fill: '#74798C' }}
+        width={200}
+        // scaleToFit={true}
+        textAnchor="middle"
+        // verticalAnchor="middle"
+      >
+        de votre objectif
+      </text>
     </RadialBarChart>
   );
 }
