@@ -1,6 +1,6 @@
 import '../styles/Dashboard.scss';
 import React from 'react';
-import useFetch from '../scripts/useFetch';
+import useGetData from '../scripts/useGetData';
 
 // Import Graph Components
 import InfoCard from './plots/InfoCard';
@@ -15,100 +15,80 @@ import IconGluc from '../assets/IconGluc.svg';
 import IconLipid from '../assets/IconLipid.svg';
 import IconProt from '../assets/IconProt.svg';
 
-function Dashboard() {
-  const idUser = 12;
-  const domain = 'http://localhost:3000';
-  const mainURI = '/user/' + idUser.toString() + '/';
-
-  const {
-    // User Data
-    data: userData,
-    loading: loadUserData,
-    error: errorUserData,
-  } = useFetch(domain + mainURI);
-
-  const {
-    // User Activity
-    data: userActivity,
-  } = useFetch(domain + mainURI + 'activity');
-
-  const {
-    // User Average Sessions
-    data: userAverageSessions,
-  } = useFetch(domain + mainURI + 'average-sessions');
-
-  const {
-    // User Performance
-    data: userPerformance,
-  } = useFetch(domain + mainURI + 'performance');
+/**
+ * If boolUseFetch is TRUE, useFetch and data from API
+ * If boolUseFetch is FALSE, useMock and data from file
+ */
+function Dashboard({ boolUseFetch }) {
+  const dataGet = useGetData(boolUseFetch);
 
   return (
     <main>
       <div className="title">
-        {loadUserData && <h1>{loadUserData}</h1>}
-        {userData && (
+        {dataGet.mainData.load && <h1>{dataGet.mainData.load}</h1>}
+        {dataGet.mainData.data && (
           <h1>
-            Bonjour <span>{userData.userInfos.firstName}</span>
+            Bonjour <span>{dataGet.mainData.data.userInfos.firstName}</span>
           </h1>
         )}
-        {errorUserData && <h1>{errorUserData}</h1>}
+        {dataGet.mainData.error && <h1>{dataGet.mainData.error}</h1>}
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </div>
 
       <article>
-        {userActivity && (
+        {dataGet.activity && (
           <div className="bar">
-            <CustomBarChart activity={userActivity} />
+            <CustomBarChart activity={dataGet.activity.data} />
           </div>
         )}
 
-        {userAverageSessions && (
+        {dataGet.averageSessions && (
           <div className="line">
-            <CustomLineChart average={userAverageSessions} />
+            <CustomLineChart average={dataGet.averageSessions.data} />
           </div>
         )}
 
-        {userPerformance && (
+        {dataGet.performance && (
           <div className="radar">
-            <CustomRadarChart perf={userPerformance} />
+            <CustomRadarChart perf={dataGet.performance.data} />
           </div>
         )}
 
-        {userData && (
+        {dataGet.mainData && (
           <div className="radial">
-            <CustomRadialBarChart score={userData.todayScore} />
+            <CustomRadialBarChart score={dataGet.mainData.data.todayScore} />
           </div>
         )}
       </article>
 
       <aside>
-        {userData && (
+        {dataGet.mainData && (
           <ul>
             <InfoCard
               srcImg={IconCal}
               colorImg="#FBEAEA"
-              infoValue={userData.keyData.calorieCount}
+              infoValue={dataGet.mainData.data.keyData.calorieCount}
               infoUnit="kCal"
               infoLegend="Calories"
             />
             <InfoCard
               srcImg={IconProt}
               colorImg="#E9F4FB"
-              infoValue={userData.keyData.proteinCount}
+              infoValue={dataGet.mainData.data.keyData.proteinCount}
               infoUnit="g"
               infoLegend="Protéïnes"
             />
             <InfoCard
               srcImg={IconGluc}
               colorImg="#FAF6E5"
-              infoValue={userData.keyData.carbohydrateCount}
+              infoValue={dataGet.mainData.data.keyData.carbohydrateCount}
               infoUnit="g"
               infoLegend="Glucides"
             />
             <InfoCard
               srcImg={IconLipid}
               colorImg="#FBEAEF"
-              infoValue={userData.keyData.lipidCount}
+              infoValue={dataGet.mainData.data.keyData.lipidCount}
               infoUnit="g"
               infoLegend="Lipides"
             />
