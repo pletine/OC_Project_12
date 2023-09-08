@@ -1,8 +1,7 @@
 import useFetch from './useFetch';
 import useMock from './useMock';
 
-const useGetData = (boolUseFetch) => {
-    const idUser = 12;
+const useGetData = (idUser, boolUseFetch) => {
     const domain = 'http://localhost:3000';
     const mainURI = '/user/' + idUser.toString() + '/';
 

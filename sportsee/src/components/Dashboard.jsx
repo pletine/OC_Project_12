@@ -1,7 +1,10 @@
 import '../styles/Dashboard.scss';
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import useGetData from '../scripts/useGetData';
 import useChooseDataMode from '../scripts/useChooseDataMode';
+
+import Error from './Error';
 
 // Import Graph Components
 import InfoCard from './plots/InfoCard';
@@ -17,11 +20,17 @@ import IconLipid from '../assets/IconLipid.svg';
 import IconProt from '../assets/IconProt.svg';
 
 function Dashboard() {
+  // Get ID of the User
+  const { idUser } = useParams();
+
   // Mode of data selection : data from API or from Mock
   // If true, use API, else use Mock
   const [getDataMode] = useChooseDataMode();
-  const dataGet = useGetData(getDataMode);
-
+  const dataGet = useGetData(Number(idUser), getDataMode);
+  console.log(dataGet);
+  if (!dataGet.mainData.data) {
+    return <Error />;
+  }
   return (
     <main>
       <div className="title">
