@@ -11,6 +11,6 @@ root.render(
   <React.StrictMode>
     {/* <Header /> */}
     {/* <Aside /> */}
-    <Dashboard dataMode={false}/>
+    <Dashboard />
   </React.StrictMode>
 );

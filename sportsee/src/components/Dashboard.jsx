@@ -1,6 +1,7 @@
 import '../styles/Dashboard.scss';
 import React from 'react';
 import useGetData from '../scripts/useGetData';
+import useChooseDataMode from '../scripts/useChooseDataMode';
 
 // Import Graph Components
 import InfoCard from './plots/InfoCard';
@@ -15,12 +16,11 @@ import IconGluc from '../assets/IconGluc.svg';
 import IconLipid from '../assets/IconLipid.svg';
 import IconProt from '../assets/IconProt.svg';
 
-/**
- * If boolUseFetch is TRUE, useFetch and data from API
- * If boolUseFetch is FALSE, useMock and data from file
- */
-function Dashboard({ boolUseFetch }) {
-  const dataGet = useGetData(boolUseFetch);
+function Dashboard() {
+  // Mode of data selection : data from API or from Mock
+  // If true, use API, else use Mock
+  const [getDataMode] = useChooseDataMode();
+  const dataGet = useGetData(getDataMode);
 
   return (
     <main>
@@ -36,25 +36,25 @@ function Dashboard({ boolUseFetch }) {
       </div>
 
       <article>
-        {dataGet.activity && (
+        {dataGet.activity.data && (
           <div className="bar">
             <CustomBarChart activity={dataGet.activity.data} />
           </div>
         )}
 
-        {dataGet.averageSessions && (
+        {dataGet.averageSessions.data && (
           <div className="line">
             <CustomLineChart average={dataGet.averageSessions.data} />
           </div>
         )}
 
-        {dataGet.performance && (
+        {dataGet.performance.data && (
           <div className="radar">
             <CustomRadarChart perf={dataGet.performance.data} />
           </div>
         )}
 
-        {dataGet.mainData && (
+        {dataGet.mainData.data && (
           <div className="radial">
             <CustomRadialBarChart score={dataGet.mainData.data.todayScore} />
           </div>
@@ -62,7 +62,7 @@ function Dashboard({ boolUseFetch }) {
       </article>
 
       <aside>
-        {dataGet.mainData && (
+        {dataGet.mainData.data && (
           <ul>
             <InfoCard
               srcImg={IconCal}
