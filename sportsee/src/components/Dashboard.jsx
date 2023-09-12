@@ -27,7 +27,6 @@ function Dashboard() {
   // If true, use API, else use Mock
   const [getDataMode] = useChooseDataMode();
   const dataGet = useGetData(Number(idUser), getDataMode);
-  console.log(dataGet);
   if (!dataGet.mainData.data) {
     return <Error />;
   }
@@ -44,35 +43,39 @@ function Dashboard() {
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </div>
 
-      <article>
-        {dataGet.activity.data && (
-          <div className="bar">
-            <CustomBarChart activity={dataGet.activity.data} />
+      <div className="show_data">
+        <div className="graphs">
+          <div className="graphs_upstair">
+            {dataGet.activity.data && (
+              <CustomBarChart activity={dataGet.activity.data} />
+            )}
           </div>
-        )}
 
-        {dataGet.averageSessions.data && (
-          <div className="line">
-            <CustomLineChart average={dataGet.averageSessions.data} />
-          </div>
-        )}
+          <div className="graphs_downstair">
+            {dataGet.averageSessions.data && (
+              <div className="line">
+                <CustomLineChart average={dataGet.averageSessions.data} />
+              </div>
+            )}
 
-        {dataGet.performance.data && (
-          <div className="radar">
-            <CustomRadarChart perf={dataGet.performance.data} />
+            {dataGet.performance.data && (
+              <div className="radar">
+                <CustomRadarChart perf={dataGet.performance.data} />
+              </div>
+            )}
+
+            {dataGet.mainData.data && (
+              <div className="radial">
+                <CustomRadialBarChart
+                  score={dataGet.mainData.data.todayScore}
+                />
+              </div>
+            )}
           </div>
-        )}
+        </div>
 
         {dataGet.mainData.data && (
-          <div className="radial">
-            <CustomRadialBarChart score={dataGet.mainData.data.todayScore} />
-          </div>
-        )}
-      </article>
-
-      <aside>
-        {dataGet.mainData.data && (
-          <ul>
+          <ul className="numbers">
             <InfoCard
               srcImg={IconCal}
               colorImg="#FBEAEA"
@@ -103,7 +106,7 @@ function Dashboard() {
             />
           </ul>
         )}
-      </aside>
+      </div>
     </main>
   );
 }

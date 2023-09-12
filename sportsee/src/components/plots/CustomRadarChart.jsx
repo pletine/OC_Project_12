@@ -1,5 +1,11 @@
 import React from 'react';
-import { PolarGrid, PolarAngleAxis, Radar, RadarChart } from 'recharts';
+import {
+  PolarGrid,
+  PolarAngleAxis,
+  Radar,
+  RadarChart,
+  ResponsiveContainer,
+} from 'recharts';
 
 export default function CustomRadarChart({ perf }) {
   // Create Array to store the value in the correct format
@@ -11,15 +17,17 @@ export default function CustomRadarChart({ perf }) {
   });
 
   return (
-    <RadarChart outerRadius={90} width={730} height={250} data={dataSort}>
-      <PolarGrid />
-      <PolarAngleAxis dataKey="kind" />
-      <Radar
-        dataKey="value"
-        stroke="#8884d8"
-        fill="#8884d8"
-        fillOpacity={0.6}
-      />
-    </RadarChart>
+    <ResponsiveContainer height="100%" width="100%">
+      <RadarChart outerRadius={90} width={730} height={250} data={dataSort}>
+        <PolarGrid />
+        <PolarAngleAxis dataKey="kind" />
+        <Radar
+          dataKey="value"
+          stroke="#8884d8"
+          fill="#8884d8"
+          fillOpacity={0.6}
+        />
+      </RadarChart>
+    </ResponsiveContainer>
   );
 }

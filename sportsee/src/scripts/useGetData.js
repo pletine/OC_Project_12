@@ -35,7 +35,13 @@ const useGetData = (idUser, boolUseFetch) => {
 
     const {mockMainData, mockActivity, mockSessions, mockPerformance} = useMock(idUser);
 
-    if(boolUseFetch) {
+    console.log('');
+    if(boolUseFetch 
+        && (fetchUserData || fetchLoadUserData || fetchErrorUserData) // Fetch User Data
+        && (fetchUserActivity || fetchLoadUserActivity || fetchErrorUserActivity) // Fetch User Activity
+        && (fetchUserAverageSessions || fetchLoadUserAverageSessions || fetchErrorUserAverageSessions) // Fetch User Average Sessions
+        && (fetchUserPerformance || fetchLoadUserPerformance || fetchErrorUserPerformance) // Fetch User Performance
+    ) {
         return {
             mainData: {
                 data: fetchUserData, 
