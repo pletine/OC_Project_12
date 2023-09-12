@@ -48,7 +48,7 @@ main {
         .graphs {
             display: flex;
             flex-flow: column nowrap;
-            width: 75%;
+            width: 80%;
 
             .recharts-responsive-container {
                 background-color: #FBFBFB;
@@ -75,7 +75,7 @@ main {
         }
         
         .numbers { // Element ul
-            width: 25%;
+            width: 20%;
             height: 100%;
             display: flex;
             flex-flow: column nowrap;
@@ -85,17 +85,16 @@ main {
             .infoCard { // Element li
                 background-color: #FBFBFB;
                 border-radius: 10px;
-                height: 25%;
             
                 figure {
                     display: flex;
                     flex-flow: row nowrap;
                     justify-content: space-around;
-                    padding: 10% 5%;
+                    padding: 1em 1em;
                     height: 100%;
                     
                     img {
-                        padding: 15%;
+                        padding: 10%;
                         border-radius: 25px;
                     }
             
