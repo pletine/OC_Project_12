@@ -12,6 +12,37 @@ import {
 } from 'recharts';
 
 export default function CustomBarChart({ activity }) {
+  const renderColorfulLegendText = (value, entry) => {
+    return (
+      <span style={{ color: '#74798C', paddingRight: '50px' }}>{value}</span>
+    );
+  };
+
+  const styleToolTip = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FF0101',
+    fontSize: '14px',
+    fontWeight: '500',
+    color: '#FFFFFF',
+    width: '80px',
+    height: '65px',
+  };
+
+  const CustomToolTip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div>
+          <p style={styleToolTip}>{`${payload[0].value}kg`}</p>
+          <p style={styleToolTip}>{`${payload[1].value}Kcal`}</p>
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <ResponsiveContainer height="100%" width="100%">
       <BarChart
@@ -26,8 +57,10 @@ export default function CustomBarChart({ activity }) {
           bottom: 5,
         }}
       >
-        <text x={20} y={20} fill="rgba(32, 37, 58, 1))">
-          <tspan>Activité quotidienne</tspan>
+        <text x={40} y={40} fill="rgba(32, 37, 58, 1))">
+          <tspan style={{ fontSize: '15px', fontWeight: '500' }}>
+            Activité quotidienne
+          </tspan>
         </text>
         <Legend
           verticalAlign="top"
@@ -35,6 +68,10 @@ export default function CustomBarChart({ activity }) {
           iconType="circle"
           iconSize={10}
           height={65}
+          wrapperStyle={{
+            fontSize: '14px',
+          }}
+          formatter={renderColorfulLegendText}
         />
         <CartesianGrid strokeDasharray="3 3" vertical={false} />
         <XAxis
@@ -57,7 +94,7 @@ export default function CustomBarChart({ activity }) {
           tickMargin={16}
         />
         <YAxis dataKey="calories" yAxisId="calories" orientation="left" hide />
-        <Tooltip offset={50} label={false} wrapperStyle={{ outline: 'none' }} />
+        <Tooltip content={<CustomToolTip />} />
         <Bar
           name="Poids (kg)"
           dataKey="kilogram"
