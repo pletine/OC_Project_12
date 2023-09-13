@@ -9,24 +9,28 @@ import {
 
 export default function CustomRadarChart({ perf }) {
   // Create Array to store the value in the correct format
-  let dataSort = [perf.kind.length];
+  let lengthArray = Object.keys(perf.kind).length;
+  let dataSort = [lengthArray];
   perf.data.forEach((elem) => {
     let index = perf.data.indexOf(elem);
     let newElem = { value: elem.value, kind: perf.kind[index + 1] };
-    dataSort[index] = newElem;
+    dataSort[lengthArray - index - 1] = newElem;
   });
 
   return (
     <ResponsiveContainer height="100%" width="100%">
-      <RadarChart outerRadius={90} width={730} height={250} data={dataSort}>
+      <RadarChart
+        cx="50%"
+        cy="50%"
+        outerRadius="75%"
+        startAngle={210}
+        endAngle={570}
+        data={dataSort}
+        fill="#FFFFFF"
+      >
         <PolarGrid />
-        <PolarAngleAxis dataKey="kind" />
-        <Radar
-          dataKey="value"
-          stroke="#8884d8"
-          fill="#8884d8"
-          fillOpacity={0.6}
-        />
+        <PolarAngleAxis dataKey="kind" tick={{ fill: '#FFF' }} />
+        <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
       </RadarChart>
     </ResponsiveContainer>
   );

@@ -5,7 +5,7 @@ export default function CustomRadialBarChart({ score }) {
   const dataGraph = [
     {
       name: 'Value',
-      uv: score * 100,
+      uv: 0.9 * 100,
       fill: '#FF0000',
     },
     {
@@ -16,17 +16,18 @@ export default function CustomRadialBarChart({ score }) {
   ];
 
   return (
-    <ResponsiveContainer height="100%" width="75%">
+    <ResponsiveContainer height="100%" width="100%">
       <RadialBarChart
         width={400}
         height={400}
-        innerRadius="70%"
-        outerRadius="120%"
+        innerRadius="80%"
+        outerRadius="100%"
         data={dataGraph}
         startAngle={180}
         endAngle={-180}
       >
-        <RadialBar clockWise={true} dataKey="uv" />
+        <circle cx="50%" cy="50%" fill="white" r="39%"></circle>
+        <RadialBar dataKey="uv" cornerRadius={10} />
         <text
           x="50%"
           y="50%"

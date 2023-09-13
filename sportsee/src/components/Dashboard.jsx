@@ -66,6 +66,7 @@ function Dashboard() {
 
             {dataGet.mainData.data && (
               <div className="radial">
+                <h2>Score</h2>
                 <CustomRadialBarChart
                   score={dataGet.mainData.data.todayScore}
                 />
