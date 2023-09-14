@@ -44,7 +44,7 @@ export default function CustomLineChart({ average }) {
           fillOpacity="0.2"
           x={x}
           y={y - 30}
-          width={width}
+          width={width + 10}
           height={height * 2}
         />
       );
@@ -53,19 +53,33 @@ export default function CustomLineChart({ average }) {
   }
 
   const writeWeekDay = (numDay) => {
-    const dayList = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-    return dayList[numDay - 1];
+    const dayList = ['', 'L', 'M', 'M', 'J', 'V', 'S', 'D', ''];
+    return dayList[numDay];
   };
+
+  const total = average.sessions.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.sessionLength,
+    0
+  );
+
+  // Calculez la moyenne en divisant la somme par le nombre d'éléments
+  const moyenne = total / average.sessions.length;
+
+  const extendedData = [
+    { day: 0, sessionLength: moyenne },
+    ...average.sessions,
+    { day: 8, sessionLength: moyenne },
+  ];
 
   return (
     <ResponsiveContainer height="100%" width="100%">
       <LineChart
-        data={average.sessions}
+        data={extendedData}
         margin={{
           top: 30,
           right: 0,
           left: 0,
-          bottom: 40,
+          bottom: 30,
         }}
       >
         <Line
@@ -80,6 +94,7 @@ export default function CustomLineChart({ average }) {
             strokeWidth: '10',
             strokeOpacity: '0.5',
           }}
+          isConnectNulls={true}
         />
         <XAxis
           dataKey="day"
@@ -89,17 +104,17 @@ export default function CustomLineChart({ average }) {
           tickMargin={10}
           tickCount={7}
           tick={{ fill: '#fff', fontSize: 20 }}
-          padding={{ left: 30, right: 30 }}
+          padding={{ left: -10, right: -10 }}
           minTickGap={1}
           tickFormatter={(numDay) => writeWeekDay(numDay)}
           interval="preserveStartEnd"
         />
         <YAxis
-          hide="true"
+          hide
           axisLine={false}
           tickLine={false}
           type="number"
-          domain={['dataMin-10', 'dataMax + 10']}
+          domain={['dataMin-10', 'dataMax + 20']}
         />
         <Tooltip content={<CustomToolTip />} cursor={<CustomCursor />} />
       </LineChart>

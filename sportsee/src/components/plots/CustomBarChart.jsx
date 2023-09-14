@@ -51,7 +51,7 @@ export default function CustomBarChart({ activity }) {
         data={activity.sessions}
         title="Activité quotienne"
         margin={{
-          top: 20,
+          top: 5,
           right: 30,
           left: 20,
           bottom: 5,
