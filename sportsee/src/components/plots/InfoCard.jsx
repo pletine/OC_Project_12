@@ -1,11 +1,11 @@
 /**
- * InfoCard component
- * @param {String} srcImg
- * @param {} colorImg
- * @param {} infoValue
- * @param {} infoUnit
- * @param {} infoLegend
- * @returns
+ * InfoCard component to display the information of the user
+ * @param {String} srcImg - Path of the image
+ * @param {String} colorImg - Color code for the background of the image
+ * @param {Number} infoValue - Value to be displayed
+ * @param {String} infoUnit - Unit of the value
+ * @param {String} infoLegend - Legend of the value
+ * @returns {JSX.Element} - Return the info card as li
  */
 export default function InfoCard({
   srcImg,

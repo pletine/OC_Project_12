@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
 
+/**
+ * Custom Hook to choose the mode of data selection
+ * The function change the mode of data selection when the user press the key "l"
+ * @returns {object} - Return the mode of data selection in format of {getDataMode, setGetDataMode}
+ */
 const useChooseDataMode = () => {
     // Mode of data selection : data from API or from Mock
     // If true, use API, else use Mock
@@ -21,15 +26,12 @@ const useChooseDataMode = () => {
               }
               break;
             default:
-              console.log(event.key);
               break;
           }
     };
-
-    // Ajoutez un écouteur d'événements pour la touche "m" lorsque le composant est monté
     document.addEventListener('keydown', handleKeyPress);
 
-    // N'oubliez pas de supprimer l'écouteur d'événements lorsque le composant est démonté
+    // Delete the event listener on cleanup
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };

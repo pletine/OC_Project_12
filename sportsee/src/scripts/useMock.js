@@ -1,5 +1,10 @@
 import data from '../assets/data.js';
 
+/**
+ * Return the mock data of the user from a specific file
+ * @param {Number} idUser - Id of the user
+ * @returns {object} - Return the mock data of the user in format of {mockMainData, mockActivity, mockSessions, mockPerformance}
+ */
 const useMock = (idUser) => {
     const mockMainData = data.USER_MAIN_DATA.find((elem) => elem.id === idUser);
     const mockActivity = data.USER_ACTIVITY.find((elem) => elem.userId === idUser);

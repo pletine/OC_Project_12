@@ -7,6 +7,11 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
+/**
+ * CustomRadarChart is a component that displays a radar chart
+ * @param {Object} perf - Object containing the data to be displayed
+ * @returns {JSX.Element} - Return the radar chart as ResponsiveContainer
+ */
 export default function CustomRadarChart({ perf }) {
   // Associate the kind name with the french word
   const kinds = {

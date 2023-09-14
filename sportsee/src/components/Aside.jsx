@@ -6,7 +6,7 @@ import iconNatation from '../assets/logo_natation.svg';
 import iconVelo from '../assets/logo_vélo.svg';
 
 /**
- * Aside component
+ * Aside component with the logo of the different sports
  * @component Aside
  * @returns {JSX.Element} Aside component
  */

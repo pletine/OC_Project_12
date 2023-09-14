@@ -1,7 +1,14 @@
 import React from 'react';
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
 
+/**
+ * CustomRadialBarChart is a component that displays a radial bar chart
+ * @param {Object} score - Object containing the data to be displayed
+ * @returns {JSX.Element} - Return the radial bar chart as ResponsiveContainer
+ */
 export default function CustomRadialBarChart({ score }) {
+  // Create Array to store the value in the correct format
+  // Use a second value to specify the scale
   const dataGraph = [
     {
       name: 'Value',
