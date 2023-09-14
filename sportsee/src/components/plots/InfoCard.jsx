@@ -1,3 +1,12 @@
+/**
+ * InfoCard component
+ * @param {String} srcImg
+ * @param {} colorImg
+ * @param {} infoValue
+ * @param {} infoUnit
+ * @param {} infoLegend
+ * @returns
+ */
 export default function InfoCard({
   srcImg,
   colorImg,

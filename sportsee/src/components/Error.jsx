@@ -1,8 +1,10 @@
+// Style of the page
 const stylePage = {
   width: '100%',
   lineHeight: '24px',
 };
 
+// Style of the title
 const styleH1 = {
   fontFamily: 'Roboto',
   fontSize: '48px',
@@ -10,6 +12,7 @@ const styleH1 = {
   padding: '0.5em',
 };
 
+// Style of the paragraph
 const styleP = {
   fontFamily: 'Roboto',
   fontSize: '18px',
@@ -17,6 +20,11 @@ const styleP = {
   padding: '0.2em 1.5em',
 };
 
+/**
+ * Error component
+ * @component Error
+ * @returns {JSX.Element} Error component
+ */
 export default function Error() {
   return (
     <div style={stylePage}>

@@ -1,6 +1,11 @@
 import logo from '../assets/logo.svg';
 import '../styles/Header.scss';
 
+/**
+ *  Header component
+ * @component Header
+ * @returns {JSX.Element} Header component
+ */
 function Header() {
   return (
     <header>

@@ -12,6 +12,9 @@ main {
     display: flex;
     flex-flow: column nowrap;
 
+    padding: 2%;
+    padding-bottom: 5%;
+
     .title {
         width: 100%;
         line-height: 24px;
@@ -130,15 +133,18 @@ main {
                     display: flex;
                     flex-flow: row nowrap;
                     justify-content: space-around;
+                    align-items: center;
                     padding: 1em 1em;
                     height: 100%;
                     
                     img {
-                        padding: 15%;
+                        height: 4em;
+                        padding: 1.2em;
                         border-radius: 25px;
                     }
-            
+                    
                     figcaption {
+                        height: 4em;
                         display: flex;
                         flex-flow: column nowrap;
                         text-align: left;

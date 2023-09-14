@@ -26,7 +26,7 @@ export default function CustomRadialBarChart({ score }) {
         startAngle={180}
         endAngle={-180}
       >
-        <circle cx="50%" cy="50%" fill="white" r="39%"></circle>
+        <circle cx="50%" cy="50%" fill="white" r="35%"></circle>
         <RadialBar dataKey="uv" cornerRadius={10} />
         <text
           x="50%"

@@ -2,7 +2,10 @@
 
 .aside_nav {
     float: left;
-    
+    display: flex;
+    justify-content: center;
+    padding-top: 7em;
+
     height: 100vh;
     width: $width_aside;
     
@@ -11,10 +14,15 @@
 
     nav ul {
         li {
+            display: flex;
             background-color: #FFFFFF;
             width: 64px;
             height: 64px;
             border-radius: 6px;
+            color: black;
+            align-items: center;
+            justify-content: center;
+            margin: 2em;
         }
     }
 
@@ -22,12 +30,10 @@
         position: absolute;
         bottom: 100px;
         transform: rotate(-90deg);
+        white-space: nowrap;
 
-        font-family: Roboto;
         font-size: 12px;
         font-weight: 500;
         line-height: 24px;
-        letter-spacing: 0px;
-        text-align: left;
     }
 }

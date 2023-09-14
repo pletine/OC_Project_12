@@ -8,14 +8,21 @@ import {
 } from 'recharts';
 
 export default function CustomRadarChart({ perf }) {
+  // Associate the kind name with the french word
+  const kinds = {
+    intensity: 'Intensité',
+    cardio: 'Cardio',
+    energy: 'Energie',
+    endurance: 'Endurance',
+    strength: 'Force',
+    speed: 'Vitesse',
+  };
+
   // Create Array to store the value in the correct format
-  let lengthArray = Object.keys(perf.kind).length;
-  let dataSort = [lengthArray];
-  perf.data.forEach((elem) => {
-    let index = perf.data.indexOf(elem);
-    let newElem = { value: elem.value, kind: perf.kind[index + 1] };
-    dataSort[index] = newElem;
+  const titleRadar = perf.data.map((elem) => {
+    return { value: elem.value, kind: kinds[perf.kind[elem.kind]] };
   });
+  console.log(titleRadar);
 
   return (
     <ResponsiveContainer height="100%" width="100%">
@@ -25,7 +32,7 @@ export default function CustomRadarChart({ perf }) {
         outerRadius="75%"
         startAngle={210}
         endAngle={570}
-        data={dataSort}
+        data={titleRadar}
         fill="#FFFFFF"
       >
         <PolarGrid />

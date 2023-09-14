@@ -19,6 +19,11 @@ import IconGluc from '../assets/IconGluc.svg';
 import IconLipid from '../assets/IconLipid.svg';
 import IconProt from '../assets/IconProt.svg';
 
+/**
+ * Dashboard component
+ * @component Dashboard
+ * @returns {JSX.Element} Dashboard component
+ */
 function Dashboard() {
   // Get ID of the User
   const { idUser } = useParams();
@@ -27,9 +32,12 @@ function Dashboard() {
   // If true, use API, else use Mock
   const [getDataMode] = useChooseDataMode();
   const dataGet = useGetData(Number(idUser), getDataMode);
+
+  // If data is not loaded, display error message
   if (!dataGet.mainData.data) {
     return <Error />;
   }
+
   return (
     <main>
       <div className="title">

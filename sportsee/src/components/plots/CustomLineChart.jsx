@@ -63,7 +63,7 @@ export default function CustomLineChart({ average }) {
   );
 
   // Calculez la moyenne en divisant la somme par le nombre d'éléments
-  const moyenne = total / average.sessions.length;
+  const moyenne = Math.round(total / average.sessions.length);
 
   const extendedData = [
     { day: 0, sessionLength: moyenne },
