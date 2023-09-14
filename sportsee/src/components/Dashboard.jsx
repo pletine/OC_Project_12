@@ -46,6 +46,7 @@ function Dashboard() {
       <div className="show_data">
         <div className="graphs">
           <div className="graphs_upstair">
+            <h2>Activité quotidienne</h2>
             {dataGet.activity.data && (
               <CustomBarChart activity={dataGet.activity.data} />
             )}
@@ -54,6 +55,7 @@ function Dashboard() {
           <div className="graphs_downstair">
             {dataGet.averageSessions.data && (
               <div className="line">
+                <h2>Durée moyenne des sessions</h2>
                 <CustomLineChart average={dataGet.averageSessions.data} />
               </div>
             )}
@@ -68,7 +70,13 @@ function Dashboard() {
               <div className="radial">
                 <h2>Score</h2>
                 <CustomRadialBarChart
-                  score={dataGet.mainData.data.todayScore}
+                  score={
+                    dataGet.mainData.data.todayScore
+                      ? dataGet.mainData.data.todayScore
+                      : dataGet.mainData.data.score
+                      ? dataGet.mainData.data.score
+                      : 2
+                  }
                 />
               </div>
             )}

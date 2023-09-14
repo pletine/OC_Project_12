@@ -50,6 +50,15 @@ main {
                 height: 50%;
                 margin: 10px;
                 background-color: #FBFBFB;
+
+                h2 {
+                    position: relative;
+                    top: 40px;
+                    left: 40px;
+                    color: #20253A;
+                    font-size: 15px;
+                    font-weight: 500;
+                }
             }
     
             .graphs_downstair {
@@ -70,6 +79,19 @@ main {
 
                 .line {
                     background-color: #FF0000;
+                    // overflow: hidden;
+                    position: relative;
+
+                    h2 {
+                        position: absolute;
+                        top: 40px;
+                        left: 40px;
+                        opacity: 0.5;
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: #FFFFFF;
+                        width: 30%;
+                    }
                 }
                 
                 .radar {

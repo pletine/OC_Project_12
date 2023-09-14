@@ -14,7 +14,7 @@ export default function CustomRadarChart({ perf }) {
   perf.data.forEach((elem) => {
     let index = perf.data.indexOf(elem);
     let newElem = { value: elem.value, kind: perf.kind[index + 1] };
-    dataSort[lengthArray - index - 1] = newElem;
+    dataSort[index] = newElem;
   });
 
   return (

@@ -5,7 +5,7 @@ export default function CustomRadialBarChart({ score }) {
   const dataGraph = [
     {
       name: 'Value',
-      uv: 0.9 * 100,
+      uv: score * 100,
       fill: '#FF0000',
     },
     {

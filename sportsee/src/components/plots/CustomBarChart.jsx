@@ -57,11 +57,6 @@ export default function CustomBarChart({ activity }) {
           bottom: 5,
         }}
       >
-        <text x={40} y={40} fill="rgba(32, 37, 58, 1))">
-          <tspan style={{ fontSize: '15px', fontWeight: '500' }}>
-            Activité quotidienne
-          </tspan>
-        </text>
         <Legend
           verticalAlign="top"
           align="right"
