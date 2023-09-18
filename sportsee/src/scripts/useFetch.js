@@ -15,7 +15,7 @@ const useFetch = (url) => {
     setData(null);
     setError(null);
 
-    const fetchTestData = async (urlUse) => {
+    const fetchData = async (urlUse) => {
       try {
         const data = await fetch(urlUse, {
           method: 'GET',
@@ -35,11 +35,10 @@ const useFetch = (url) => {
       } catch (error) {
         setLoading(false);
         setError('Error:' + error);
-        // console.error('Error:', error);
       }
     };
 
-    fetchTestData(url);
+    fetchData(url);
   }, [url]);
 
   return { data, loading, error };

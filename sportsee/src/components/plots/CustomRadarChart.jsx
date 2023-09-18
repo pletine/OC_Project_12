@@ -27,7 +27,6 @@ export default function CustomRadarChart({ perf }) {
   const titleRadar = perf.data.map((elem) => {
     return { value: elem.value, kind: kinds[perf.kind[elem.kind]] };
   });
-  console.log(titleRadar);
 
   return (
     <ResponsiveContainer height="100%" width="100%">

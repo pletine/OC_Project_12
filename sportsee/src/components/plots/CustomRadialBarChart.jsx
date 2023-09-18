@@ -45,9 +45,7 @@ export default function CustomRadialBarChart({ score }) {
             fill: '#282D30',
           }}
           width={200}
-          // scaleToFit={true}
           textAnchor="middle"
-          // verticalAnchor="middle"
         >
           {(score * 100).toString()}%
         </text>
@@ -56,9 +54,7 @@ export default function CustomRadialBarChart({ score }) {
           y="60%"
           style={{ fontSize: 16, fontWeight: 500, fill: '#74798C' }}
           width={200}
-          // scaleToFit={true}
           textAnchor="middle"
-          // verticalAnchor="middle"
         >
           de votre objectif
         </text>
