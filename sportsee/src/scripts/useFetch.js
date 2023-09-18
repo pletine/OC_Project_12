@@ -16,26 +16,16 @@ const useFetch = (url) => {
     setError(null);
 
     const fetchData = async (urlUse) => {
-      try {
-        const data = await fetch(urlUse, {
+        const dataFetch = await fetch(urlUse, {
           method: 'GET',
           headers: {
             Accept: 'application/json',
           },
-        })
-          .then((response) => {
-            setLoading(false);
-            return response.json();
-          })
-          .then((response) => {
-            setLoading(false);
-            return response.data;
-          });
+        });
+        const dataFetchJson = await dataFetch.json();
+        const data = dataFetchJson.data;
+        console.log(data);
         setData(data);
-      } catch (error) {
-        setLoading(false);
-        setError('Error:' + error);
-      }
     };
 
     fetchData(url);

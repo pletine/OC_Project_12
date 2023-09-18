@@ -1,7 +1,8 @@
 import '../styles/Dashboard.scss';
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import useGetData from '../scripts/useGetData';
+// import useGetData from '../scripts/useGetData';
+import getData from '../scripts/getData';
 import useChooseDataMode from '../scripts/useChooseDataMode';
 
 import Error from './Error';
@@ -31,7 +32,8 @@ function Dashboard() {
   // Mode of data selection : data from API or from Mock
   // If true, use API, else use Mock
   const [getDataMode] = useChooseDataMode();
-  const dataGet = useGetData(Number(idUser), getDataMode);
+  // const dataGet = useGetData(Number(idUser), getDataMode);
+  const dataGet = getData(Number(idUser), getDataMode);
 
   // If data is not loaded, display error message
   if (!dataGet.mainData.data) {
